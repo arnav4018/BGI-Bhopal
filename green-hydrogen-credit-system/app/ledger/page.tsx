@@ -105,47 +105,63 @@ export default function CreditLedger() {
     <div className="space-y-8">
       {/* Header */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center space-y-4"
+        transition={{ duration: 0.8 }}
+        className="text-center space-y-6 mb-12"
       >
-        <div className="flex items-center justify-center space-x-3">
-          <BookOpen className="w-8 h-8 text-green-600" />
-          <h1 className="text-4xl font-bold text-gray-900">Credit Ledger</h1>
+        <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-full px-6 py-3 border border-purple-200">
+          <BookOpen className="w-6 h-6 text-purple-600" />
+          <span className="text-sm font-semibold text-purple-800">Blockchain Ledger</span>
         </div>
-        <p className="text-gray-600">View and manage all Green Hydrogen Credits</p>
+        
+        <h1 className="text-6xl font-black text-gray-900">
+          Credit <span className="gradient-text">Ledger</span>
+        </h1>
+        
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Explore the complete history of green hydrogen credits with 
+          <span className="font-bold text-green-600"> immutable transparency</span> and real-time tracking
+        </p>
       </motion.div>
 
       {/* Filters and Search */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 }}
-        className="card"
+        transition={{ delay: 0.2, duration: 0.8 }}
+        className="card bg-gradient-to-br from-white to-gray-50 border-gray-200"
       >
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col lg:flex-row gap-6 items-center">
           <div className="flex-1 relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+            <Search className="absolute left-6 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
             <input
               type="text"
-              placeholder="Search by Credit ID or Producer..."
+              placeholder="Search credits by ID, producer, or owner..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="input-field pl-10"
+              className="input-field pl-14 text-lg"
             />
           </div>
-          <div className="flex items-center space-x-2">
-            <Filter className="w-4 h-4 text-gray-400" />
-            <select
-              value={filterStatus}
-              onChange={(e) => setFilterStatus(e.target.value)}
-              className="input-field"
-            >
-              <option value="all">All Credits</option>
-              <option value="active">Active</option>
-              <option value="retired">Retired</option>
-              <option value="verified">Verified</option>
-            </select>
+          
+          <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-3">
+              <Filter className="w-5 h-5 text-gray-500" />
+              <select
+                value={filterStatus}
+                onChange={(e) => setFilterStatus(e.target.value)}
+                className="input-field min-w-[150px]"
+              >
+                <option value="all">All Credits</option>
+                <option value="active">Active Only</option>
+                <option value="retired">Retired Only</option>
+                <option value="verified">Verified Only</option>
+              </select>
+            </div>
+            
+            <div className="text-sm text-gray-500 bg-gray-100 px-4 py-2 rounded-full">
+              {filteredCredits.length} credits found
+            </div>
           </div>
         </div>
       </motion.div>

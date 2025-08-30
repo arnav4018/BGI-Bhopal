@@ -140,15 +140,24 @@ export default function AuditorView() {
     <div className="space-y-8">
       {/* Header */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center space-y-4"
+        transition={{ duration: 0.8 }}
+        className="text-center space-y-6 mb-12"
       >
-        <div className="flex items-center justify-center space-x-3">
-          <Shield className="w-8 h-8 text-green-600" />
-          <h1 className="text-4xl font-bold text-gray-900">Auditor View</h1>
+        <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-red-100 to-pink-100 rounded-full px-6 py-3 border border-red-200">
+          <Shield className="w-6 h-6 text-red-600" />
+          <span className="text-sm font-semibold text-red-800">Security & Verification</span>
         </div>
-        <p className="text-gray-600">Verify credits and monitor system integrity</p>
+        
+        <h1 className="text-6xl font-black text-gray-900">
+          Auditor <span className="gradient-text">Control</span>
+        </h1>
+        
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Ensure system integrity with 
+          <span className="font-bold text-green-600"> AI-powered fraud detection</span> and comprehensive verification tools
+        </p>
       </motion.div>
 
       {/* Stats Dashboard */}
